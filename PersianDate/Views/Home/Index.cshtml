@@ -1,0 +1,37 @@
+﻿@model PersianDate.Models.DateConvert
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model => model.persianDateFrom)
+        @Html.TextBoxFor(model => model.persianDateFrom, new { @class = "persianDatepicker" })
+        <input type="submit" value="Convert To Gregorian" />
+    </div>
+}
+<br/>
+@if (Model.gregorianDateConverted != null){
+<div>
+    @Html.LabelFor(model => model.gregorianDateConverted)
+    @Html.TextBoxFor(model => model.gregorianDateConverted, "{0:yyyy/MM/dd}")
+</div>
+}
+
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.gregorianDateFrom)
+    @Html.EditorFor(model => model.gregorianDateFrom)
+    <input type="submit" value="Convert To Persian Date" />
+}
+<br />
+@if(Model.persianDateConverted != null){
+@Html.LabelFor(model => model.persianDateConverted)
+@Html.EditorFor(model => model.persianDateConverted)
+}
+
+
+
